@@ -1,0 +1,10 @@
+name: LocationBookmark
+version: '${project.version}'
+main: io.github.oomsooms.locationbookmark.LocationBookmark
+api-version: '1.20'
+load: STARTUP
+
+commands:
+  bookmark:
+    description: Description of your command
+    Usage: /bookmark <add|find> <name> <private|public>
