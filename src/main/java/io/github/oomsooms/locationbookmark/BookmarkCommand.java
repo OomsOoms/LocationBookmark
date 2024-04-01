@@ -43,8 +43,8 @@ public class BookmarkCommand implements CommandExecutor, TabCompleter {
         if (args[0].equalsIgnoreCase("add")) {
             try {
                 String query = String.format(
-                        "SELECT name FROM bookmarks WHERE seed = '%s' and userUuid = '%s' and name = '%s' and private = 0;",
-                        seed, userUuid, name);
+                        "SELECT name FROM bookmarks WHERE seed = '%s' and name = '%s' and (private = 0 or userUuid = '%s');",
+                        seed, name, userUuid);
                 ResultSet rs = dbManager.executeQuery(query);
                 if (rs.next()) {
                     sender.sendMessage("A bookmark with this name already exists.");
@@ -157,7 +157,11 @@ public class BookmarkCommand implements CommandExecutor, TabCompleter {
             }
         }
         if (args.length == 3) {
-            completions.add("private");
+            if (args.length == 3) {
+                if (args[0].equalsIgnoreCase("add")) {
+                    completions.add("private");
+                }
+            }
         }
 
         return completions;

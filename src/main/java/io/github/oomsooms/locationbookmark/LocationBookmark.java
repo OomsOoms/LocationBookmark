@@ -23,7 +23,7 @@ public final class LocationBookmark extends JavaPlugin {
             dbManager = DatabaseManager.getInstance(folderDir, "LocationBookmark.db");
 
             // Create table if it does not exist
-            String query = "CREATE TABLE IF NOT EXISTS bookmarks (id INT PRIMARY KEY, name TEXT, seed TEXT, dimension TEXT, userUuid VARCHAR(36), private BOOLEAN, x REAL, y REAL, z REAL)";
+            String query = "CREATE TABLE IF NOT EXISTS bookmarks (id INTEGER PRIMARY KEY, name TEXT, seed TEXT, dimension TEXT, userUuid VARCHAR(36), private BOOLEAN, x REAL, y REAL, z REAL)";
             dbManager.executeQuery(query);
         } catch (Exception e) {
             e.printStackTrace();
