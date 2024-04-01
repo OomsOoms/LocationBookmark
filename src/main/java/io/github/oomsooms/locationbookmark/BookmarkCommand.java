@@ -148,7 +148,6 @@ public class BookmarkCommand implements CommandExecutor, TabCompleter {
                 try {
                     ResultSet rs = dbManager.executeQuery(query);
                     while (rs.next()) {
-                        System.out.println(rs.getString("name"));
                         completions.add(rs.getString("name"));
                     }
                 } catch (SQLException e) {

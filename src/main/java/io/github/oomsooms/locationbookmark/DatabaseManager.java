@@ -49,8 +49,14 @@ public class DatabaseManager {
         ResultSet resultSet = null;
         try {
             Statement statement = connection.createStatement();
-
-            resultSet = statement.executeQuery(query);
+    
+            if (query.trim().toUpperCase().startsWith("SELECT")) {
+                // Execute SELECT query
+                resultSet = statement.executeQuery(query);
+            } else {
+                // Execute other types of queries (INSERT, UPDATE, DELETE, etc.)
+                statement.executeUpdate(query);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
